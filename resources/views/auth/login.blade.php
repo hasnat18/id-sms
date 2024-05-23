@@ -8,7 +8,7 @@
     <form class="form-horizontal form-material text-center" id="login-reg" action="{{ route('login') }}" method="post">
         @csrf
         <a href="javascript:void(0)" class="db">
-            <img src="{{ url('assets/images/logo.jpg') }}" alt="Logo" width="35%" />
+            <img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo" width="35%" />
             <br />
         </a>
 

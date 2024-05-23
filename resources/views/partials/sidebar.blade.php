@@ -6,7 +6,7 @@
             <ul id="sidebarnav">
                 <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                         aria-expanded="false">
-                        <img src="{{ url('assets/images/users/1.jpg') }}" alt="user-img" class="img-circle">
+                        <img src="{{ asset('assets/images/users/1.jpg') }}" alt="user-img" class="img-circle">
                         <span class="hide-menu">{{ Auth::user()->name }}</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
@@ -170,7 +170,7 @@
                                         aria-expanded="false">
                                         <span class="hide-menu">Staffs Salary</span>
                                     </a>
-                                    
+
                                     <ul aria-expanded="false" class="collapse">
                                         <a href="{{ route('salaries.index') }}">View Staff Salary</a>
                                         @can('salary-create')
@@ -253,7 +253,7 @@
                                 </ul>
                             </li>
                             <li>
-                                
+
                                 <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                     aria-expanded="false">
                                     <span class="hide-menu">Live Classes</span>
