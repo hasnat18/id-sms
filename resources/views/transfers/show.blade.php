@@ -14,7 +14,8 @@
                     <li class="breadcrumb-item active">Transfers</li>
                     <li class="breadcrumb-item active">Show Transfer</li>
                 </ol>
-                <a href="{{ route('transfers.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Back</a>
+                <a href="{{ route('transfers.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Back</a>
             </div>
         </div>
     </div>
@@ -50,11 +51,12 @@
                                 {{ $data->admission->gr_no }}
                             </div>
                         </div>
-                        @if($data->doc !== null)
+                        @if ($data->doc !== null)
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Attached Document:</strong>
-                                    <img src="{{ url('public/uploads/transfers/'.$data->doc) }}" alt="" style="height: 400px;">
+                                    <img src="{{ asset('uploads/transfers/' . $data->doc) }}" alt=""
+                                        style="height: 400px;">
                                 </div>
                             </div>
                         @endif

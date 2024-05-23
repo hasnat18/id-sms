@@ -14,7 +14,8 @@
                     <li class="breadcrumb-item active">Fees</li>
                     <li class="breadcrumb-item active">Pay Fee</li>
                 </ol>
-                <a href="{{ route('fees.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Back</a>
+                <a href="{{ route('fees.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Back</a>
             </div>
         </div>
     </div>
@@ -23,15 +24,16 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <h3>{{ \Carbon\Carbon::parse($data->_session->start_date)->format('Y')." - ".\Carbon\Carbon::parse($data->_session->end_date)->format('Y')  }}</h3>
+                    <h3>{{ \Carbon\Carbon::parse($data->_session->start_date)->format('Y') . ' - ' . \Carbon\Carbon::parse($data->_session->end_date)->format('Y') }}
+                    </h3>
                     <div class="d-flex justify-content-between">
                         <div>
                             <h5 class="card-title">{{ $data->students->name }}</h5>
-                            <small>{{ $data->students->_class->name." - ".$data->students->_class->section->name }}</small>
+                            <small>{{ $data->students->_class->name . ' - ' . $data->students->_class->section->name }}</small>
                         </div>
                         <div class="text-right">
                             <h5 class="font-bold"> Challan Id: {{ $data->id }}</h5>
-                            @if($data->status == 'pending')
+                            @if ($data->status == 'pending')
                                 <label class="label label-warning">{{ $data->status }}</label>
                             @elseif($data->status == 'paid')
                                 <label class="label label-success">{{ $data->status }}</label>
@@ -39,8 +41,9 @@
                                 <label class="label label-danger">{{ $data->status }}</label>
                             @endif
                             <div>
-                                @if($data->students->admission->student_pic !== null)
-                                    <img src="{{ url('public/uploads/students/'.$data->students->admission->student_pic) }}" alt="" style="height: 150px">
+                                @if ($data->students->admission->student_pic !== null)
+                                    <img src="{{ asset('uploads/students/' . $data->students->admission->student_pic) }}"
+                                        alt="" style="height: 150px">
                                 @endif
                             </div>
                         </div>
@@ -49,14 +52,14 @@
                     <div>
                         <table border="1" style="width: 100%;text-align: center;font-weight: bold;">
                             <thead>
-                            <td>#</td>
-                            <td>Fee Type</td>
-                            <td>Fee Amount</td>
+                                <td>#</td>
+                                <td>Fee Type</td>
+                                <td>Fee Amount</td>
                             </thead>
                             <tbody style="font-weight: normal" id="tb">
-                                @foreach($data->feedetails as $key => $fd)
+                                @foreach ($data->feedetails as $key => $fd)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <td>{{ $fd->fee_type }}</td>
                                         <td>{{ $fd->fee_amount }}</td>
                                     </tr>
@@ -88,58 +91,62 @@
                                 </ul>
                             </div>
                         @endif
-                        {!! Form::model($data, array('route' => ['fees.update', $data->id],'method'=>'PATCH', 'class' => 'form-material m-t-40 create')) !!}
+                        {!! Form::model($data, [
+                            'route' => ['fees.update', $data->id],
+                            'method' => 'PATCH',
+                            'class' => 'form-material m-t-40 create',
+                        ]) !!}
 
-{{--                            <div class="form-group">--}}
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-12">Payment Type</label>--}}
-{{--                                    <div class="col-sm-12 validate">--}}
-{{--                                        <select name="payment_type" class="form-control" >--}}
-{{--                                            <option value="">Select Option</option>--}}
-{{--                                            <option value="Cash">Cash</option>--}}
-{{--                                            <option value="Jazz Cash">Jazz Cash</option>--}}
-{{--                                            <option value="Easy Paisa">Easy Paisa</option>--}}
-{{--                                            <option value="Bank Deposit">Bank Deposit</option>--}}
-{{--                                            <option value="Cheaque Deposit">Cheaque Deposit</option>--}}
-{{--                                            <option value="Pay Order">Pay Order</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                        {{--                            <div class="form-group"> --}}
+                        {{--                                <div class="row"> --}}
+                        {{--                                    <label class="col-sm-12">Payment Type</label> --}}
+                        {{--                                    <div class="col-sm-12 validate"> --}}
+                        {{--                                        <select name="payment_type" class="form-control" > --}}
+                        {{--                                            <option value="">Select Option</option> --}}
+                        {{--                                            <option value="Cash">Cash</option> --}}
+                        {{--                                            <option value="Jazz Cash">Jazz Cash</option> --}}
+                        {{--                                            <option value="Easy Paisa">Easy Paisa</option> --}}
+                        {{--                                            <option value="Bank Deposit">Bank Deposit</option> --}}
+                        {{--                                            <option value="Cheaque Deposit">Cheaque Deposit</option> --}}
+                        {{--                                            <option value="Pay Order">Pay Order</option> --}}
+                        {{--                                        </select> --}}
+                        {{--                                    </div> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
 
-{{--                            <div class="form-group">--}}
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-12">Operator / Bank</label>--}}
-{{--                                    <div class="col-sm-12 validate">--}}
-{{--                                        <input type="text" value="{{ $data->operator }}" name="operator" class="form-control" >--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-12">Transaction ID</label>--}}
-{{--                                    <div class="col-sm-12 validate">--}}
-{{--                                        <input type="text" value="{{ $data->transaction_id }}" name="transaction_id" class="form-control">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-12">Paid Amount</label>--}}
-{{--                                    <div class="col-sm-12 validate">--}}
-{{--                                        <input type="text" value="{{ $data->paid_amount > 0 ? $data->paid_amount : $data->fee_amount }}" name="paid_amount" class="form-control" required>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="form-group">--}}
-{{--                                <div class="row">--}}
-{{--                                    <label class="col-sm-12">Discount Amount</label>--}}
-{{--                                    <div class="col-sm-12 validate">--}}
-{{--                                        <input type="text" value="{{ $data->fee_discount }}" name="fee_discount" class="form-control">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                           <button class="btn btn-primary" type="submit">Submit</button>
+                        {{--                            <div class="form-group"> --}}
+                        {{--                                <div class="row"> --}}
+                        {{--                                    <label class="col-sm-12">Operator / Bank</label> --}}
+                        {{--                                    <div class="col-sm-12 validate"> --}}
+                        {{--                                        <input type="text" value="{{ $data->operator }}" name="operator" class="form-control" > --}}
+                        {{--                                    </div> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+                        {{--                            <div class="form-group"> --}}
+                        {{--                                <div class="row"> --}}
+                        {{--                                    <label class="col-sm-12">Transaction ID</label> --}}
+                        {{--                                    <div class="col-sm-12 validate"> --}}
+                        {{--                                        <input type="text" value="{{ $data->transaction_id }}" name="transaction_id" class="form-control"> --}}
+                        {{--                                    </div> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+                        {{--                            <div class="form-group"> --}}
+                        {{--                                <div class="row"> --}}
+                        {{--                                    <label class="col-sm-12">Paid Amount</label> --}}
+                        {{--                                    <div class="col-sm-12 validate"> --}}
+                        {{--                                        <input type="text" value="{{ $data->paid_amount > 0 ? $data->paid_amount : $data->fee_amount }}" name="paid_amount" class="form-control" required> --}}
+                        {{--                                    </div> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+                        {{--                            <div class="form-group"> --}}
+                        {{--                                <div class="row"> --}}
+                        {{--                                    <label class="col-sm-12">Discount Amount</label> --}}
+                        {{--                                    <div class="col-sm-12 validate"> --}}
+                        {{--                                        <input type="text" value="{{ $data->fee_discount }}" name="fee_discount" class="form-control"> --}}
+                        {{--                                    </div> --}}
+                        {{--                                </div> --}}
+                        {{--                            </div> --}}
+                        <button class="btn btn-primary" type="submit">Submit</button>
                         {!! Form::close() !!}
                     </div>
 

@@ -27,20 +27,24 @@
                         <div class="col-lg-8">
                             <h5 class="card-title">Details of Student: <strong>{{ ucwords($data->name) }}</strong></h5><br>
                             <h5><b> Class : </b><strong>{{ ucwords($data->_class->name) }}</strong></h5>
-                            <h5 class="my-3"><b> Section : </b><strong>{{ ucwords($data->_class->section->name) }}</strong></b></h5>
+                            <h5 class="my-3"><b> Section :
+                                </b><strong>{{ ucwords($data->_class->section->name) }}</strong></b></h5>
                             <h5 class="my-3"><b> Roll Number : </b><strong>{{ ucwords($data->roll_no) }}</strong></h5>
                             <h5 class="my-3"><b> city : </b><strong>{{ ucwords($data->admission->city) }}</strong></h5>
                             <h5 class="my-3"><b> state : </b><strong>{{ ucwords($data->admission->state) }}</strong></h5>
-                            <h5 class="my-3"><b> country : </b><strong>{{ ucwords($data->admission->country) }}</strong></h5>
+                            <h5 class="my-3"><b> country : </b><strong>{{ ucwords($data->admission->country) }}</strong>
+                            </h5>
                             <h5 class="my-3"><b> phone : </b><strong>{{ ucwords($data->admission->phone) }}</strong></h5>
                             <h5 class="my-3"><b> email : </b><strong>{{ $data->admission->email }}</strong></h5>
-                            <h5 class="my-3"><b> gender : </b><strong>{{ ucwords($data->admission->gender) }}</strong></h5>
-                            <h5 class="my-3"><b> Religion : </b><strong>{{ ucwords($data->admission->religion) }}</strong></h5>
+                            <h5 class="my-3"><b> gender : </b><strong>{{ ucwords($data->admission->gender) }}</strong>
+                            </h5>
+                            <h5 class="my-3"><b> Religion :
+                                </b><strong>{{ ucwords($data->admission->religion) }}</strong></h5>
                         </div>
                         <div class="col-lg-4">
                             <div class="text-right">
                                 @if ($data->admission->student_pic !== null)
-                                    <img src="{{ url('public/uploads/students/' . $data->admission->student_pic) }}"
+                                    <img src="{{ asset('uploads/students/' . $data->admission->student_pic) }}"
                                         alt="" style="height: 150px">
                                 @endif
                             </div>
@@ -69,11 +73,11 @@
                                 @foreach ($data->admission->studentAtd as $attendance)
                                     <tr>
                                         <td>
-                                            @if($attendance->attendence === 'present')
+                                            @if ($attendance->attendence === 'present')
                                                 <label class="label label-success">Present</label>
                                             @else
                                                 <label class="label label-danger">Absent</label>
-                                            @endif    
+                                            @endif
                                         </td>
                                         <td>{{ ucwords($attendance->added_at) }}</td>
                                     </tr>
@@ -150,15 +154,23 @@
                                         <td>{{ ucwords($data->fees->paid_at) }}</td>
                                         <td>{{ ucwords($data->fees->status) }}</td>
                                         <td>
-                                            @if( !auth()->user()->is_student )
-                                                <a class="btn btn-warning btn-xs" href="{{ route('fees.print', $data->fees->id) }}" target="_blank">Print</a>
+                                            @if (!auth()->user()->is_student)
+                                                <a class="btn btn-warning btn-xs"
+                                                    href="{{ route('fees.print', $data->fees->id) }}"
+                                                    target="_blank">Print</a>
                                             @endif
-                                                                                    <a class="btn btn-info btn-xs" href="{{ route('fees.show',$data->fees->id) }}">Show</a>
+                                            <a class="btn btn-info btn-xs"
+                                                href="{{ route('fees.show', $data->fees->id) }}">Show</a>
                                             @can('fee-edit')
-                                                <a class="btn btn-primary btn-xs" href="{{ route('fees.edit',$data->fees->id) }}">Pay</a>
+                                                <a class="btn btn-primary btn-xs"
+                                                    href="{{ route('fees.edit', $data->fees->id) }}">Pay</a>
                                             @endcan
                                             @can('fee-delete')
-                                                {!! Form::open(['method' => 'DELETE','route' => ['fees.destroy', $data->fees->id],'style'=>'display:inline']) !!}
+                                                {!! Form::open([
+                                                    'method' => 'DELETE',
+                                                    'route' => ['fees.destroy', $data->fees->id],
+                                                    'style' => 'display:inline',
+                                                ]) !!}
                                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                                                 {!! Form::close() !!}
                                             @endcan

@@ -75,7 +75,7 @@
                         @enderror
                     </div>
                     <div class="p-3 text-center">
-                        <img id="image_uploaded" src="{{ url('/public/placeholder.png') }}" alt=""
+                        <img id="image_uploaded" src="{{ asset('/placeholder.png') }}" alt=""
                             style="margin-bottom: 15px; height: 100px;">
                     </div>
                 </div>

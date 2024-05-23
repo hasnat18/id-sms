@@ -29,7 +29,7 @@
                     </h5>
                     <div class="float-right">
                         @if ($data->id_proof !== null)
-                            <img src="{{ url('public/uploads/staffs/' . $data->id_proof) }}" alt=""
+                            <img src="{{ asset('uploads/staffs/' . $data->id_proof) }}" alt=""
                                 class="h-50 shadow-lg" width="100" height="100">
                         @endif
                     </div>
@@ -180,15 +180,21 @@
                                             {{ ucwords($salary->status) }}
                                         </td>
                                         <td>
-                                            <a class="btn btn-info mx-2" href="{{ route('salaries.show',$salary->id) }}">Show</a>
-                                    @can('salary-edit')
-                                            <a class="btn btn-primary mx-2" href="{{ route('salaries.edit',$salary->id) }}">Edit</a>
-                                        @endcan
-                                        @can('salary-delete')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['salaries.destroy', $salary->id],'style'=>'display:inline']) !!}
-                                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
-                                        @endcan
+                                            <a class="btn btn-info mx-2"
+                                                href="{{ route('salaries.show', $salary->id) }}">Show</a>
+                                            @can('salary-edit')
+                                                <a class="btn btn-primary mx-2"
+                                                    href="{{ route('salaries.edit', $salary->id) }}">Edit</a>
+                                            @endcan
+                                            @can('salary-delete')
+                                                {!! Form::open([
+                                                    'method' => 'DELETE',
+                                                    'route' => ['salaries.destroy', $salary->id],
+                                                    'style' => 'display:inline',
+                                                ]) !!}
+                                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                {!! Form::close() !!}
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach

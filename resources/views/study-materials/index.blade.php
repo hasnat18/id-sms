@@ -15,7 +15,8 @@
                     <li class="breadcrumb-item active">All Study Material</li>
                 </ol>
                 @can('study-material-create')
-                    <a href="{{ route('study-materials.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</a>
+                    <a href="{{ route('study-materials.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                            class="fa fa-plus-circle"></i> Create New</a>
                 @endcan
             </div>
         </div>
@@ -31,28 +32,28 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-                        @if (Session::get('error'))
-                            <div class="alert alert-danger">
-                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                <ul>
-                                    <p>{{ Session::get('error') }}</p>
-                                </ul>
-                            </div>
-                        @endif
+                    @if (Session::get('error'))
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                <p>{{ Session::get('error') }}</p>
+                            </ul>
+                        </div>
+                    @endif
 
                     <h5 class="card-title">Study Material list</h5>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped">
                             <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Class</th>
-                                <th>Added By</th>
-                                <th>Uploads</th>
-                                <th>Text</th>
-                                <th>Created At</th>
-                                <th width="280px">Action</th>
-                            </tr>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Class</th>
+                                    <th>Added By</th>
+                                    <th>Uploads</th>
+                                    <th>Text</th>
+                                    <th>Created At</th>
+                                    <th width="280px">Action</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $key => $d)
@@ -61,20 +62,26 @@
                                         <td>{{ $d->__class->name }}</td>
                                         <td>{{ $d->user->name }}</td>
                                         <td>
-                                            @if($d->upload !== null)
-                                                <img src="{{ url('public/uploads/study/'.$d->upload) }}" height="150px">
+                                            @if ($d->upload !== null)
+                                                <img src="{{ asset('uploads/study/' . $d->upload) }}" height="150px">
                                             @endif
                                         </td>
                                         <td>{{ $d->text }}</td>
                                         <td>{{ $d->created_at->format('M d, Y') }}</td>
                                         <td>
-                                            <a class="btn btn-info" href="{{ route('study-materials.show',$d->id) }}">Show</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('study-materials.show', $d->id) }}">Show</a>
 
                                             @can('study-material-edit')
-                                                <a class="btn btn-primary" href="{{ route('study-materials.edit',$d->id) }}">Edit</a>
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('study-materials.edit', $d->id) }}">Edit</a>
                                             @endcan
                                             @can('study-material-delete')
-                                                {!! Form::open(['method' => 'DELETE','route' => ['study-materials.destroy', $d->id],'style'=>'display:inline']) !!}
+                                                {!! Form::open([
+                                                    'method' => 'DELETE',
+                                                    'route' => ['study-materials.destroy', $d->id],
+                                                    'style' => 'display:inline',
+                                                ]) !!}
                                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
@@ -90,6 +97,3 @@
     </div>
 
 @endsection
-
-
-

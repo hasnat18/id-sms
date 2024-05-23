@@ -14,7 +14,8 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                     <li class="breadcrumb-item active">Result Details</li>
                 </ol>
-                <a href="{{ route('results.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Back</a>
+                <a href="{{ route('results.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Back</a>
             </div>
         </div>
     </div>
@@ -26,13 +27,14 @@
                     <h5 class="card-title">{{ $data->admission->student->name }}</h5>
                     <div class="row">
                         <div class="col-lg-8">
-                            <p class="font-medium card-title">{{ $data->__class->name.' - '.$data->__class->section->name }}</p>
+                            <p class="font-medium card-title">{{ $data->__class->name . ' - ' . $data->__class->section->name }}
+                            </p>
                             <p class="card-title">Gender: {{ $data->admission->gender }}</p>
                             <p class="card-title">Date of birth: {{ $data->admission->dob }}</p>
                             <p class="card-title">Address: {{ $data->admission->address }}</p>
                             <p class="card-title">Phone: {{ $data->admission->phone }}</p>
                             <p class="card-title">Email: {{ $data->admission->email }}</p>
-                            <h2 ><b>Result Details:</b></h2>
+                            <h2><b>Result Details:</b></h2>
                             <div class="row">
                                 <div class="col-lg-4">
                                     <h5 class="card-title">Exam Type: {{ $data->exam_type }}</h5>
@@ -57,8 +59,9 @@
                                 </div>
                             </div>
 
-                            @foreach($rds as $r)
-                                <div class="row p-4 text-center font-medium mt-2" style="background-color: #e7f1ff; color: #000000">
+                            @foreach ($rds as $r)
+                                <div class="row p-4 text-center font-medium mt-2"
+                                    style="background-color: #e7f1ff; color: #000000">
                                     <div class="col-lg-4">{{ $r->subject_name }}</div>
                                     <div class="col-lg-4">{{ $r->subject_marks }}</div>
                                     <div class="col-lg-4">{{ $r->obtained_marks }}</div>
@@ -67,7 +70,8 @@
 
                         </div>
                         <div class="col-lg-4">
-                            <img src="{{ url('public/uploads/students/'.$data->admission->student_pic) }}" alt="" class="shadow-lg" height="150px">
+                            <img src="{{ asset('uploads/students/' . $data->admission->student_pic) }}" alt=""
+                                class="shadow-lg" height="150px">
                         </div>
                     </div>
 

@@ -52,7 +52,7 @@
     <script src="{{ asset('assets/node_modules/popper/popper.min.js') }}"></script>
     <script src="{{ asset('assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-    <script src="{{ url('js/ajax.js') }}"></script>
+    <script src="{{ asset('js/ajax.js') }}"></script>
     <!--Custom JavaScript -->
     <script type="text/javascript">
         $(function() {

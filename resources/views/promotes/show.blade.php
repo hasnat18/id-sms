@@ -14,7 +14,8 @@
                     <li class="breadcrumb-item">Promoted Students</li>
                     <li class="breadcrumb-item active">Promoted Student Details</li>
                 </ol>
-                <a href="{{ route('promotes.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Back</a>
+                <a href="{{ route('promotes.index') }}" class="btn btn-info d-none d-lg-block m-l-15"><i
+                        class="fa fa-plus-circle"></i> Back</a>
             </div>
         </div>
     </div>
@@ -26,20 +27,22 @@
                     <h5 class="card-title">{{ $data->name }}</h5>
                     <div class="row">
                         <div class="col-6">
-                            <h4>Class Name: {{ $data->class_name.' - '.$data->section_name }}</h4>
+                            <h4>Class Name: {{ $data->class_name . ' - ' . $data->section_name }}</h4>
                             <p>Gender: {{ $data->gender }}</p>
                             <p>Promoted Or Demoted: {{ $data->promoted_or_demoted }}</p>
                             <p>Status: {{ $data->status }}</p>
                             <p>Created At: {{ $data->created_at->format('M d, Y') }}</p>
 
                             <h3>Previous Results</h3>
-                            @foreach($results as $r)
-                                <a href="{{ route('results.show', $r->id) }}" target="_blank">{{ route('results.show', $r->id) }}</a>
+                            @foreach ($results as $r)
+                                <a href="{{ route('results.show', $r->id) }}"
+                                    target="_blank">{{ route('results.show', $r->id) }}</a>
                             @endforeach
                         </div>
                         <div class="col-6 justify-content-center">
-                            @if($data->id_proof !== null)
-                                <img src="{{ url('public/uploads/students/'.$data->id_proof) }}" height="150px" class="h-50 shadow-lg">
+                            @if ($data->id_proof !== null)
+                                <img src="{{ asset('uploads/students/' . $data->id_proof) }}" height="150px"
+                                    class="h-50 shadow-lg">
                             @endif
                         </div>
                     </div>

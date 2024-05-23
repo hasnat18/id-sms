@@ -90,7 +90,7 @@
                         @enderror
                     </div>
                     <div class="p-3 text-center">
-                        <img id="image_uploaded" src="{{ url('public/uploads/students/' . $data->student_pic) }}" alt=""
+                        <img id="image_uploaded" src="{{ asset('uploads/students/' . $data->student_pic) }}" alt=""
                             style="margin-bottom: 15px; height: 100px;">
                     </div>
                 </div>
@@ -393,7 +393,8 @@
                 <div class="mt-2 mb-2">
                     <label for="transportation_fees" class="form-label">Transportation Fees </label>
                     <input type="text" class="form-control @error('transportation_fees') is-invalid @enderror"
-                        id="transportation_fees" name="transportation_fees" value="{{ old('transportation_fees',$tp_fee) }}">
+                        id="transportation_fees" name="transportation_fees"
+                        value="{{ old('transportation_fees', $tp_fee) }}">
                     @error('transportation_fees')
                         <span class="text-danger" role="alert">
                             <strong>{{ $message }}</strong>
@@ -402,19 +403,19 @@
                 </div>
             </div>
         </div>
-        @if($data->student_auth_id == null)
-        {{-- Login Details --}}
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Login Details</h5>
-                <div class="mt-2 mb-2">
-                    <label for="is_login" class="form-label">Make Student Login <span
-                            class="m-l-5 text-danger">*</span></label>
-                    <input type="radio" name="is_login" value="0" class="ml-4 mr-2" checked><span>No</span>
-                    <input type="radio" name="is_login" value="1" class="ml-4 mr-2"><span>Yes</span>
+        @if ($data->student_auth_id == null)
+            {{-- Login Details --}}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Login Details</h5>
+                    <div class="mt-2 mb-2">
+                        <label for="is_login" class="form-label">Make Student Login <span
+                                class="m-l-5 text-danger">*</span></label>
+                        <input type="radio" name="is_login" value="0" class="ml-4 mr-2" checked><span>No</span>
+                        <input type="radio" name="is_login" value="1" class="ml-4 mr-2"><span>Yes</span>
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
         <div class="card">
             <div class="card-body">
