@@ -1,0 +1,53 @@
+@media (max-width: 767px){
+    .error-box, .login-register, .login-sidebar .login-box {
+        position: relative;
+        padding: 50px 0 !important;
+    }
+}
+
+form#login-reg {
+    padding: 150px 0;
+}
+
+.card-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+}
+.card-toolbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: .5rem 0;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.card .card-title {
+    font-weight: 700;
+    /*padding: 20px;*/
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.small-text{
+    background-color: #fdf220;
+    padding: 10px;
+    margin-left: 10px;
+    color: #5a5717;
+}
