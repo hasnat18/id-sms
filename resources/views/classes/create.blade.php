@@ -46,19 +46,20 @@
 
                     <h5 class="card-title">Create Class</h5>
                     {!! Form::open(array('route' => 'classes.store','method'=>'POST', 'class' => 'form-material m-t-40 create')) !!}
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-sm-12">Section</label>
-                                    <div class="col-sm-12 validate">
-                                        {!! Form::select('section_id', \App\Models\Section::pluck('name', 'id'),null, array('class' => 'form-control', 'required')) !!}
-                                    </div>
-                                </div>
-                            </div>
+                       
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-sm-12">Name</label>
                                     <div class="col-sm-12 validate">
                                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control', 'required')) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-12">Section</label>
+                                    <div class="col-sm-12 validate">
+                                        {!! Form::select('section_id', \App\Models\Section::pluck('name', 'id'),null, array('class' => 'form-control', 'required')) !!}
                                     </div>
                                 </div>
                             </div>

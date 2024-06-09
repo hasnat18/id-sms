@@ -46,8 +46,8 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Section</th>
                                 <th>Name</th>
+                                <th>Section</th>
                                 <th width="280px">Action</th>
                             </tr>
                             </thead>
@@ -55,8 +55,8 @@
                                 @foreach ($data as $key => $d)
                                     <tr>
                                         <td>{{ $d->id }}</td>
-                                        <td>{{ $d->section->name }}</td>
                                         <td>{{ $d->name }}</td>
+                                        <td>{{ $d->section->name }}</td>
                                         <td>
                                             @can('class-edit')
                                                 <a class="btn btn-primary" href="{{ route('classes.edit',$d->id) }}">Edit</a>

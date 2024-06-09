@@ -220,6 +220,18 @@
                             <li>
                                 <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
                                     aria-expanded="false">
+                                    <span class="hide-menu">Sections</span>
+                                </a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <a href="{{ route('sections.index') }}">View Sections</a>
+                                    @can('class-create')
+                                        <a href="{{ route('sections.create') }}">Create Section</a>
+                                    @endcan
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                    aria-expanded="false">
                                     <span class="hide-menu">Subjects</span>
                                 </a>
                                 <ul aria-expanded="false" class="collapse">
